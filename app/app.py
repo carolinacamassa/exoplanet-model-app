@@ -3,11 +3,11 @@ from flask import Flask, render_template, flash, request, jsonify, Markup
 import logging, io, os, sys
 import pandas as pd
 import numpy as np
-from sklearn.ensemble import GradientBoostingClassifier
-import scipy
-import pickle
 
-# EB looks for an 'application' callable by default.
+import scipy
+from joblib import load
+
+
 application = Flask(__name__)
 
 # model related variables
@@ -25,27 +25,14 @@ features = ['fixed acidity',
 			 'alcohol',
 			 'color']
 
-def get_wine_image_to_show(wine_color, wine_quality):
-	if wine_color == 0:
-		wine_color_str = 'white'
-	else:
-		wine_color_str = 'red'
-	return('/static/images/wine_' + wine_color_str + '_' + str(wine_quality) + '.jpg')
 
+# Load the serialized ML model
 @application.before_first_request
 def startup():
-	global gbm_model
-
-	# load saved model from web app root directory
-	gbm_model = pickle.load(open("static/pickles/gbm_model_dump.p",'rb'))
+	global rforest
+	rforest = load(open("static/model.joblib"))
 
 
-@application.errorhandler(500)
-def server_error(e):
-    logging.exception('some eror')
-    return """
-    And internal error <pre>{}</pre>
-    """.format(e), 500
 
 @application.route('/background_process', methods=['POST', 'GET'])
 def background_process():
