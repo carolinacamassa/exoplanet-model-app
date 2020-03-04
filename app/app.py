@@ -17,7 +17,12 @@ app = Flask(__name__)
 
 # form to collect user input:
 class InputForm(FlaskForm):
-    p_radius = DecimalRangeField('Planet Radius', default = 10 )
+    p_radius = DecimalRangeField('Radius', default = 10 )
+    p_mass = DecimalRangeField('Mass', default = 1 )
+    p_period = DecimalRangeField('Period', default = 30 )
+    p_distance_eff = DecimalRangeField('Effective th. distance from star', default = 0.005 )
+    s_radius = DecimalRangeField('Radius', default = 1 )
+    s_mag = DecimalRangeField('Magnitude', default = 5 )
     submit = SubmitField('Submit')
 
 
@@ -33,14 +38,12 @@ def index():
 
 # model related variables
 # gbm_model = None
-# features = ['P_RADIUS_EST',
-# 			 'P_MASS_EST',
-# 			 'citric acid',
-# 			 'residual sugar',
-# 			 'chlorides',
-# 			 'free sulfur dioxide',
-# 			 'total sulfur dioxide',
-# 			 ]
+features = ['P_RADIUS_EST',
+			 'P_MASS_EST',
+			 'P_PERIOD',
+			 'P_DISTANCE_EFF',
+			 'S_RADIUS_EST',
+			 'S_MAG']
 
 
 
@@ -64,17 +67,7 @@ def index():
 #
 # 	# create data set of new data
 # 	x_user = pd.DataFrame([[p_radius,
-# 		p_mass,
-# 		citric_acid,
-# 		residual_sugar,
-# 		chlorides,
-# 		free_sulfur_dioxide,
-# 		total_sulfur_dioxide,
-# 		density,
-# 		pH,
-# 		sulphates,
-# 		alcohol,
-# 		color]], columns = features)
+# 		p_mass, p_period, p_distance, s_radius,s_mag  ]], columns = features)
 #
 #
 # 	# predict quality based on incoming values
