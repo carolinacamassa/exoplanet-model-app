@@ -17,6 +17,7 @@
     function outputUpdate(val, id) {
       document.querySelector('#val_' + id).innerHTML = parseFloat(val).toFixed(2);
     }
+
   </script>
 </head>
 
@@ -104,7 +105,7 @@
           <h4 class="dim ">Habitability score</h4>
           <p class="ph2 tc">
             The habitability score for this planet is:
-            <h3 class="teal-text text-lighten-2">t.b.d.</h3>
+            <h3 class="teal-text text-lighten-2">{{hab_score}}</h3>
           </p>
         </div>
       </div>
@@ -114,7 +115,7 @@
   </div>
   <!-- Footer -->
   <footer>
-  <span class = "f6 f-text">Carolina Camassa - 2020 - 
+  <span class = "f6 f-text">Carolina Camassa - 2020 -
   <a class = "i" href = "https://carolinacamassa.tech">carolinacamassa.tech</a></span>
   </footer>
 
