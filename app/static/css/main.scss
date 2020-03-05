@@ -1,24 +1,24 @@
-html{
-    height:100%;
+html {
+  height: 100%;
 }
 
 body {
   background-color: #b3cdd1;
   background-image: -webkit-linear-gradient(bottom right, #b3cdd1 0%, #9fa4c4 74%);
   background-image: -o-linear-gradient(bottom right, #b3cdd1 0%, #9fa4c4 74%);
-  background-image: linear-gradient(to top left, #b3cdd1 0%, #9fa4c4 74%);
-
+  background-image: linear-gradient(top left, #b3cdd1 0%, #9fa4c4 74%);
   font-family: sans-serif;
 }
 
-.container {
-  padding: 20px;
-}
-
-h2,
-h3 {
+h2,h3 {
   text-align: center;
 }
+
+.container {
+  padding: 15px;
+}
+
+
 /* SLIDERS */
 .slidecontainer {
   width: 80%;
@@ -26,29 +26,10 @@ h3 {
   margin: 0 auto;
 }
 
-.slider {
-  -webkit-appearance: none;
-  /* Override default CSS styles */
-  appearance: none;
-  width: 100%;
-  /* Full-width */
-  height: 25px;
-  /* Specified height */
-  background: #d3d3d3;
-  /* Grey background */
-  outline: none;
-  /* Remove outline */
-  opacity: 0.7;
-  /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: 0.2s;
-  /* 0.2 seconds transition on hover */
-  transition: opacity 0.2s;
-}
-/* Mouse-over effects */
-
-.slider:hover {
-  opacity: 1;
-  /* Fully shown on mouse-over */
+input[type = range] {
+  width: 10vw;
+  color: white;
+  border: 0;
 }
 
 footer {
