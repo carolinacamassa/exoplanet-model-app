@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from flask import Flask, render_template, flash, request, jsonify, Markup
+from flask import Flask, render_template, request, jsonify, Markup
 # form imports
 from flask_wtf import FlaskForm
 from wtforms.fields.html5 import DecimalRangeField
@@ -30,7 +30,7 @@ class InputForm(FlaskForm):
 @app.route("/", methods=['POST', 'GET'])
 def index():
     logging.warning("Index page loading.")
-    form = InputForm(csrf_enabled=False)
+    form = InputForm( meta={'csrf': False})
     return render_template('index.html', form=form)
     	# on load set form with defaults
     	# return render_template('index.html', quality_prediction=1 #,

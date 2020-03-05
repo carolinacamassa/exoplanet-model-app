@@ -12,7 +12,7 @@
   <link rel="stylesheet" href={{ url_for('static', filename='css/main.min.css') }}>
   <!-- Javascript -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src = {{ url_for('static', filename='js//materialize.min.js') }}></script>
+  <script src={{ url_for('static', filename='js//materialize.min.js') }}></script>
   <script>
     function outputUpdate(val, id) {
       document.querySelector('#val_' + id).innerHTML = parseFloat(val).toFixed(2);
@@ -21,79 +21,102 @@
 </head>
 
 <body>
-<div class = "container">
+  <div class="container">
 
+    <!-- START ROW -->
+    <div class="row mt4">
+      <!-- Planet data -->
+      <div class="col s12 m4 mv2">
+        <div class="br3 box bg-white pa3">
+          <h4 class="dim">Planet</h4>
 
-  <div class="flex flex-wrap justify-center mt4">
-    <!-- Planet data -->
-    <div class="w-100 w-25-ns ph1 pv2 mh4">
-      <div class="br3 box bg-white pa3">
-        <h4 class="dim center-align">Planet</h4>
-
-        <div class="slidecontainer">
-          <!-- Planet radius -->
-          <p>
-            <span class="f5">Planet radius</span><span class="f6 i mid-gray fr">(earth masses)</span>
-          </p>
-          <p>
-            <span class="slider">{{ form.p_radius(min=0.1, max=40,
+          <div class="slidecontainer">
+            <!-- Planet radius -->
+            <p>
+              <span class="f5">Planet radius</span><span class="f6 i mid-gray fr">(earth masses)</span>
+            </p>
+            <p>
+              <span class="slider">{{ form.p_radius(min=0.1, max=40,
                           oninput="outputUpdate(p_radius.value, p_radius.name)") }}</span>
-            <span id="val_p_radius" class="fr">{{ form.p_radius.default}}</span>
-          </p>
-          <!-- Planet mass -->
-          <p>
-            <span class="f5">Planet mass</span><span class="f6 i mid-gray fr">(earth radii)</span>
-          </p>
-          <p>
-            <span class="slider">{{ form.p_mass(min=1, max=100,
+              <span id="val_p_radius" class="fr">{{ form.p_radius.default}}</span>
+            </p>
+            <!-- Planet mass -->
+            <p>
+              <span class="f5">Planet mass</span><span class="f6 i mid-gray fr">(earth radii)</span>
+            </p>
+            <p>
+              <span class="slider">{{ form.p_mass(min=1, max=100,
                           oninput="outputUpdate(p_mass.value, p_mass.name)") }}</span>
-            <span id="val_p_mass" class="fr">{{ form.p_mass.default}}</span>
-          </p>
+              <span id="val_p_mass" class="fr">{{ form.p_mass.default}}</span>
+            </p>
+            <!-- Planet period -->
+            <p>
+              <span class="f5">Planet period</span><span class="f6 i mid-gray fr">(days)</span>
+            </p>
+            <p>
+              <span class="slider">{{ form.p_period(min=1, max=60,
+                          oninput="outputUpdate(p_period.value, p_period.name)") }}</span>
+              <span id="val_p_period" class="fr">{{ form.p_period.default}}</span>
+            </p>
+          </div>
 
         </div>
-
       </div>
-    </div>
 
 
-    <!-- Star data  -->
-    <div class="w-100 w-25-ns ph1 pv2  mh4">
-      <div class="br3 box bg-white pa3">
-        <h4 class="dim">Star</h4>
+      <!-- Star data and submit button -->
+      <div class="col s12 m4 mv2">
+        <div class="br3 box bg-white pa3">
+          <h4 class="dim">Star</h4>
 
-        <div class="slidecontainer">
-          <!-- Star radius -->
-          <p>
-            <span class="f5">Star radius</span><span class="f6 i mid-gray fr">(earth masses)</span>
-          </p>
-          <!-- Star mass -->
-          <p>
-            <span class="f5">Star mass</span><span class="f6 i mid-gray fr">(earth radii)</span>
-          </p>
-          <!-- Star magnitude -->
-          <p>
-            <span class="f5">Star magnitude</span><span class="f6 i mid-gray fr">(a.u.)</span>
+          <div class="slidecontainer">
+            <!-- Star radius -->
+            <p>
+              <span class="f5">Star radius</span>
+              <span class="f6 i mid-gray fr"><a href="https://en.wikipedia.org/wiki/Solar_mass">(solar units)</a></span>
+            </p>
+            <p>
+              <span class="slider">{{ form.s_radius(min=0.1, max=10,
+                          oninput="outputUpdate(s_radius.value,s_radius.name)") }}</span>
+              <span id="val_s_radius" class="fr">{{ form.s_radius.default}}</span>
+            </p>
+            <!-- Star magnitude -->
+
+            <p>
+              <span class="f5">Magnitude</span>
+              <span class="f6 i mid-gray fr"><a href="https://en.wikipedia.org/wiki/Magnitude_(astronomy)">(a.u.)</a></span>
+            </p>
+            <p>
+              <span class="slider">{{ form.s_mag(min=0.5, max=20,
+                        oninput="outputUpdate(s_mag.value,s_mag.name)") }}</span>
+              <span id="val_s_mag" class="fr">{{ form.s_mag.default}}</span>
+            </p>
+          </div>
+        </div>
+        <div class="br3 box bg-white pa3 mt2 center-align">
+          {{ form.submit(class_="btn") }}</div>
+      </div>
+
+
+      <!-- Model result -->
+      <div class="col s12 m4 mv2">
+        <div class="br3 box bg-white pa3">
+          <h4 class="dim ">Habitability score</h4>
+          <p class="ph2 tc">
+            The habitability score for this planet is:
+            <h3 class="teal-text text-lighten-2">t.b.d.</h3>
           </p>
         </div>
       </div>
-    </div>
 
-
-    <!-- Model result -->
-    <div class="w-100 w-25-ns ph1 pv2  mh4">
-      <div class="br3 box bg-white pa3">
-        <h4>Habitability score</h4>
-        <p class="ph2 tc">
-          The habitability score for this planet is:
-        </p>
-      </div>
     </div>
+    <!-- END ROW -->
   </div>
-</div>
   <!-- Footer -->
-  <!-- <footer class="tc mb2 mt5">
-    <img class="center " src="https://forthebadge.com/images/badges/no-ragrets.svg">
-  </footer> -->
+  <footer>
+  <span class = "f6 f-text">Carolina Camassa - 2020 - 
+  <a class = "i" href = "https://carolinacamassa.tech">carolinacamassa.tech</a></span>
+  </footer>
 
 
 </body>
