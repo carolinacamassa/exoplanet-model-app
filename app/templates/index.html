@@ -17,12 +17,13 @@
     function outputUpdate(val, id) {
       document.querySelector('#val_' + id).innerHTML = parseFloat(val).toFixed(2);
     }
-
   </script>
 </head>
 
 <body>
   <div class="container">
+    <form  action="" method="post" role="form">
+    {{ form.csrf_token }}
 
     <!-- START ROW -->
     <div class="row mt4">
@@ -30,7 +31,9 @@
       <div class="col s12 m4 mv2">
         <div class="br3 box bg-white pa3">
           <h4 class="dim">Planet</h4>
-
+          {% if form.errors %}
+          {{ form.errors }}
+          {% endif %}
           <div class="slidecontainer">
             <!-- Planet radius -->
             <p>
@@ -108,6 +111,7 @@
             <h3 class="teal-text text-lighten-2">{{hab_score}}</h3>
           </p>
         </div>
+      </form>
       </div>
 
     </div>
@@ -115,8 +119,8 @@
   </div>
   <!-- Footer -->
   <footer>
-  <span class = "f6 f-text">Carolina Camassa - 2020 -
-  <a class = "i" href = "https://carolinacamassa.tech">carolinacamassa.tech</a></span>
+    <span class="f6 f-text">Carolina Camassa - 2020 -
+      <a class="i" href="https://carolinacamassa.tech">carolinacamassa.tech</a></span>
   </footer>
 
 
