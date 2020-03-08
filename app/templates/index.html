@@ -13,52 +13,46 @@
   <link rel="stylesheet" href={{ url_for('static', filename='css/main.min.css') }}>
   <!-- Javascript -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src={{ url_for('static', filename='js//materialize.min.js') }}></script>
+  <script src={{ url_for('static', filename='js/materialize.min.js') }}></script>
   <script>
     function outputUpdate(val, id) {
       document.querySelector('#val_' + id).innerHTML = parseFloat(val).toFixed(2);
-
     }
-
-    function formatNum(n){
-      return parseFloat(n).toFixed(2);
-    }
-
   </script>
 </head>
 
 <body>
   <div class="container">
-    <form  action="" method="post" role="form">
-    {{ form.csrf_token }}
+    <form action="" method="post" role="form">
+      {{ form.csrf_token }}
 
-    <!-- START ROW -->
-    <div class="row mt4">
-      <!-- Planet data -->
-      <div class="col s12 m4 mv2">
-        <div class="br3 box bg-white pa3">
-          <h4 class="dim">Planet</h4>
-          <div class="slidecontainer">
-            <!-- Planet radius -->
-            <p>
-              <span class="f5">Planet radius</span><span class="f6 i mid-gray fr">(earth radii)</span>
-            </p>
-            <p>
-              <span class="slider">{{ form.p_radius(min=0.5, max=15,
+      <!-- START ROW -->
+      <div class="row mt4">
+        <!-- Planet data -->
+        <div class="col s12 m4 mv2">
+          <div class="br3 box bg-white pa3">
+            <h4 class="dim">Planet</h4>
+            <div class="slidecontainer">
+              <!-- Planet radius -->
+              <p>
+                <span class="f5">Planet radius</span><span class="f6 i mid-gray fr">(earth radii)</span>
+              </p>
+              <p>
+                <span class="slider">{{ form.p_radius(min=0.5, max=15,
                           oninput="outputUpdate(p_radius.value, p_radius.name)") }}</span>
-              <span id="val_p_radius" class="fr">{{ "%.2f"|format(form.p_radius.data)}}</span>
-            </p>
-            <!-- Planet mass -->
-            <p>
-              <span class="f5">Planet mass</span><span class="f6 i mid-gray fr">(earth masses)</span>
-            </p>
-            <p>
-              <span class="slider">{{ form.p_mass(min=0.5, max=30,
+                <span id="val_p_radius" class="fr">{{ "%.2f"|format(form.p_radius.data)}}</span>
+              </p>
+              <!-- Planet mass -->
+              <p>
+                <span class="f5">Planet mass</span><span class="f6 i mid-gray fr">(earth masses)</span>
+              </p>
+              <p>
+                <span class="slider">{{ form.p_mass(min=0.5, max=30,
                           oninput="outputUpdate(p_mass.value, p_mass.name)") }}</span>
-              <span id="val_p_mass" class="fr">{{ "%.2f"|format(form.p_mass.data)}}</span>
-            </p>
-            <!-- Planet period -->
-            <!-- <p>
+                <span id="val_p_mass" class="fr">{{ "%.2f"|format(form.p_mass.data)}}</span>
+              </p>
+              <!-- Planet period -->
+              <!-- <p>
               <span class="f5">Planet period</span><span class="f6 i mid-gray fr">(days)</span>
             </p>
             <p>
@@ -66,73 +60,73 @@
                           oninput="outputUpdate(p_period.value, p_period.name)") }}</span>
               <span id="val_p_period" class="fr">{{ "%.2f"|format(form.p_period.data)}}</span>
             </p> -->
-            <!-- Planet distance-->
-            <p>
-              <span class="f5">Effective thermal distance from the star</span>
-              <span class="f6 i mid-gray fr"><a href="https://en.wikipedia.org/wiki/Astronomical_unit">(A.U.)</a></span>
-            </p>
-            <p>
-              <span class="slider">{{ form.p_distance(min=0.01, max=1.5,
+              <!-- Planet distance-->
+              <p>
+                <span class="f5">Effective thermal distance from the star</span>
+                <span class="f6 i mid-gray fr"><a href="https://en.wikipedia.org/wiki/Astronomical_unit">(A.U.)</a></span>
+              </p>
+              <p>
+                <span class="slider">{{ form.p_distance(min=0.01, max=1.5,
                           oninput="outputUpdate(p_distance.value, p_distance.name)") }}</span>
-              <span id="val_p_distance" class="fr">{{ "%.2f"|format(form.p_distance.data)}}</span>
-            </p>
+                <span id="val_p_distance" class="fr">{{ "%.2f"|format(form.p_distance.data)}}</span>
+              </p>
+            </div>
+
           </div>
-
         </div>
-      </div>
 
 
-      <!-- Star data and submit button -->
-      <div class="col s12 m4 mv2">
-        <div class="br3 box bg-white pa3">
-          <h4 class="dim">Star</h4>
+        <!-- Star data and submit button -->
+        <div class="col s12 m4 mv2">
+          <div class="br3 box bg-white pa3">
+            <h4 class="dim">Star</h4>
 
-          <div class="slidecontainer">
-            <!-- Star radius -->
-            <p>
-              <span class="f5">Star radius</span>
-              <span class="f6 i mid-gray fr"><a href="https://en.wikipedia.org/wiki/Solar_mass">(solar units)</a></span>
-            </p>
-            <p>
-              <span class="slider">{{ form.s_radius(min=0.1, max=5,
+            <div class="slidecontainer">
+              <!-- Star radius -->
+              <p>
+                <span class="f5">Star radius</span>
+                <span class="f6 i mid-gray fr"><a href="https://en.wikipedia.org/wiki/Solar_mass">(solar units)</a></span>
+              </p>
+              <p>
+                <span class="slider">{{ form.s_radius(min=0.1, max=5,
                           oninput="outputUpdate(s_radius.value,s_radius.name)") }}</span>
-              <span id="val_s_radius" class="fr">{{ "%.2f"|format(form.s_radius.data)}}</span>
-            </p>
-            <!-- Star magnitude -->
+                <span id="val_s_radius" class="fr">{{ "%.2f"|format(form.s_radius.data)}}</span>
+              </p>
+              <!-- Star magnitude -->
 
-            <p>
-              <span class="f5">Magnitude</span>
-              <span class="f6 i mid-gray fr"><a href="https://en.wikipedia.org/wiki/Magnitude_(astronomy)">(mag)</a></span>
-            </p>
-            <p>
-              <span class="slider">{{ form.s_mag(min=1, max=20,
+              <p>
+                <span class="f5">Magnitude</span>
+                <span class="f6 i mid-gray fr"><a href="https://en.wikipedia.org/wiki/Magnitude_(astronomy)">(mag)</a></span>
+              </p>
+              <p>
+                <span class="slider">{{ form.s_mag(min=1, max=20,
                         oninput="outputUpdate(s_mag.value,s_mag.name)") }}</span>
-              <span id="val_s_mag" class="fr">{{ "%.2f"|format(form.s_mag.data)}}</span>
-            </p>
+                <span id="val_s_mag" class="fr">{{ "%.2f"|format(form.s_mag.data)}}</span>
+              </p>
+            </div>
           </div>
+          <div class="br3 box bg-white pa3 mt2 center-align">
+            {{ form.submit(class_="btn") }}</div>
         </div>
-        <div class="br3 box bg-white pa3 mt2 center-align">
-          {{ form.submit(class_="btn") }}</div>
-      </div>
 
 
-      <!-- Model result -->
-      <div class="col s12 m4 mv2">
-        <div class="br3 box bg-white pa3">
-          <h4 class="dim ">Habitability score</h4>
-          <p class="ph2 tc">
-            The habitability score for this planet is:</p>
+        <!-- Model result -->
+        <div class="col s12 m4 mv2">
+          <div class="br3 box bg-white pa3">
+            <h4 class="dim ">Habitability score</h4>
+            <p class="ph2 tc">
+              The habitability score for this planet is:</p>
             <h3 class="teal-text text-lighten-2">{{hab_score}}</h3>
-            <p class = "center-align">with a probability of
+            <p class="center-align">with a probability of
               {{"%.1f"|format(prob)}}%
             </p>
 
-        </div>
-      </form>
-      </div>
+          </div>
+    </form>
+  </div>
 
-    </div>
-    <!-- END ROW -->
+  </div>
+  <!-- END ROW -->
   </div>
   <!-- Footer -->
   <footer>
