@@ -6,4 +6,4 @@ I’ve recently stumbled upon [this interesting dataset](http://phl.upr.edu/proj
 
 Here is what the app looks like:
 
-![exoplanetapp-screen.png]
+![](exoplanetapp-screen.png)
