@@ -7,7 +7,7 @@ I’ve recently stumbled upon [this interesting dataset](http://phl.upr.edu/proj
 ## Technologies and packages used:
 - Flask to build the app
 - *flask-wtf* to include the user input forms
-- pandas, numpy and scikit-learn for setting up the data and building the model
+- *pandas*, *numpy* and *scikit-learn* for the machine learning part
 - *joblib* to serialize the trained model
 - *Tachyons* and *Materialize* as CSS frameworks
 
